@@ -1,0 +1,2 @@
+# applicazione_decentralizzata
+Applicazione decentralizzata
