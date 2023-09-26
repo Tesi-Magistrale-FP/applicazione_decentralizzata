@@ -4,8 +4,14 @@ Le <strong>applicazioni decentralizzate</strong> sono le <strong>applicazioni sv
 
 ## Moduli software
 L'applicazione decentralizzata è composta da diversi moduli Rust:
-- [streams.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/streams.rs): a:
-  - <strong>A:</strong> a.
+- [streams.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/streams.rs): gestisce il controllo delle autorizzazioni e i riferimenti dei canali dati e log, con i relativi autori e iscritti:
+  - <strong>Controlla autorizzazione:</strong> controlla la concessione dell'autorizzazione per un consumatore da parte di un produttore.
+  - <strong>Crea canali:</strong> memorizza sullo smart contract i riferimenti per accedere ai canali e i relativi oggetti Author.
+  - <strong>Modifica indirizzi ultimi messaggi:</strong> aggiorna gli indirizzi che puntano agli ultimi messaggi scritti sul canale dati e log.
+  - <strong>Aggiungi iscritto:</strong> memorizza sullo smart contract gli oggetti Subscriber associati a dei consumatori che hanno ricevuto l'autorizzazione per accedere ai canali.
+  - <strong>Indirizzi ultimi messaggi:</strong> ottiene gli indirizzi che puntano agli ultimi messaggi scritti sul canale dati e log.
+  - <strong>Ottiene autore:</strong> ottiene gli oggetti Author usati da un produttore in un'operazione sui dati.
+  - <strong>Ottiene iscritto:</strong> ottiene gli oggetti Subscriber usati da un consumatore in un'operazione sui dati.
 - [raccolta.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/raccolta.rs): a:
   - <strong>A:</strong> a.
 - [elaborazione.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/elaborazione.rs): a:
