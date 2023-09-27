@@ -56,7 +56,7 @@ pub fn crea_canali(id_app: i32, id_op: i32, did_produttore: String, autore_dati:
     println!("\nCREAZIONE CANALI DATI E LOG\n");
 
     // Mostra i dati passati
-    println!("- ID applicazione: {}\n- ID operazione: {}\n- DID produttore: {}\n- Autore canale dati: {}\n- Link annuncio canale dati: {}\n- Indirizzo ultimo messaggio sul canale dati: {}\n- Autore canale log: {}\n- Link annuncio canale log: {}\n- Indirizzo ultimo messaggio sul canale log: {}", id_app, id_op, did_produttore, autore_dati, annuncio_dati, ind_ult_msg_dati, autore_log, annuncio_log, ind_ult_msg_log);
+    println!("- ID applicazione: {}\n- ID operazione: {}\n- DID produttore: {}\n- Link annuncio canale dati: {}\n- Indirizzo ultimo messaggio sul canale dati: {}\n- Link annuncio canale log: {}\n- Indirizzo ultimo messaggio sul canale log: {}", id_app, id_op, did_produttore, annuncio_dati, ind_ult_msg_dati, annuncio_log, ind_ult_msg_log);
 
     // Esegue il comando della wasp-cli per eseguire salvare i riferimenti dei canali dati e log e dei relativi autori sullo ISC GestioneApplicazioni
     let mut output = Command::new("wasp-cli")

@@ -12,3 +12,4 @@ iota-streams = { git = "https://github.com/iotaledger/streams", branch = "develo
 iota-crypto = { git = "https://github.com/iotaledger/crypto.rs", features = ["random"], branch = "dev" }
 allow = "0.1.5"
 rand = "0.8.5"
+chrono = "0.4.31"

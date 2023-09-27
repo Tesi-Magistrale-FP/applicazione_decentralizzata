@@ -3,7 +3,7 @@ use core::str::FromStr;
 use rand::Rng;
 use iota_streams::{
     app::transport::tangle::client::Client,
-    app_channels::api::tangle::{Address, Author, Bytes, ChannelType, Subscriber},
+    app_channels::api::tangle::{Address, Author, ChannelType, Subscriber},
 };
 
 mod moduli;
@@ -29,20 +29,43 @@ async fn main() -> Result<()>
     let id_app: i32 = 0;
     let id_op: i32 = 0;
 
-    inizializzazione_canali().await?;    
+    // Inizializzaione canali dati e log
+    inizializzazione_canali().await?;  
 
-    // Test modulo Streams
-    let _esito_controllo: bool = moduli::streams::controlla_autorizzazione(id_app, id_op, did_produttore.clone(), did_consumatore.clone());
     unsafe 
     {    
-        let _creazione_canali: bool = moduli::streams::crea_canali(id_app, id_op, did_produttore.clone(), AUTORE_DATI.as_mut().unwrap().to_string(), ANNUNCIO_DATI.as_mut().unwrap().to_string(), IND_ULT_MSG_DATI.as_mut().unwrap().to_string(), AUTORE_LOG.as_mut().unwrap().to_string(), ANNUNCIO_LOG.as_mut().unwrap().to_string(), IND_ULT_MSG_LOG.as_mut().unwrap().to_string());
-        let _modifica_indirizzi: bool = moduli::streams::modifica_ind_ult_msg(id_app, id_op, did_produttore.clone(), IND_ULT_MSG_DATI.as_mut().unwrap().to_string(), IND_ULT_MSG_LOG.as_mut().unwrap().to_string());
-        let _aggiunta_iscritti: bool = moduli::streams::aggiungi_iscritto(id_app, id_op, did_produttore.clone(), did_consumatore.clone(), ISCRITTO_DATI.as_mut().unwrap().to_string(), ISCRITTO_LOG.as_mut().unwrap().to_string());
+        // Recupera i riferimenti dei canali e gli oggetti Author e Subscriber sottoforma di stringa
+        let autore_dati_s: String = AUTORE_DATI.as_mut().unwrap().to_string();
+        let annuncio_dati_s: String = ANNUNCIO_DATI.as_mut().unwrap().to_string();
+        let ind_ult_msg_dati_s: String = IND_ULT_MSG_DATI.as_mut().unwrap().to_string();
+        let iscritto_dati_s: String = ISCRITTO_DATI.as_mut().unwrap().to_string();
+        let autore_log_s: String = AUTORE_LOG.as_mut().unwrap().to_string();
+        let annuncio_log_s: String = ANNUNCIO_LOG.as_mut().unwrap().to_string();
+        let ind_ult_msg_log_s: String = IND_ULT_MSG_LOG.as_mut().unwrap().to_string();
+        let iscritto_log_s: String = ISCRITTO_LOG.as_mut().unwrap().to_string();
+    
+        // Test modulo Streams
+        let _esito_controllo: bool = moduli::streams::controlla_autorizzazione(id_app, id_op, did_produttore.clone(), did_consumatore.clone());
+        let _creazione_canali: bool = moduli::streams::crea_canali(id_app, id_op, did_produttore.clone(), autore_dati_s.clone(), annuncio_dati_s.clone(), ind_ult_msg_dati_s.clone(), autore_log_s.clone(), annuncio_log_s.clone(), ind_ult_msg_log_s.clone());
+        let _modifica_indirizzi: bool = moduli::streams::modifica_ind_ult_msg(id_app, id_op, did_produttore.clone(), ind_ult_msg_dati_s.clone(), ind_ult_msg_log_s.clone());
+        let _aggiunta_iscritti: bool = moduli::streams::aggiungi_iscritto(id_app, id_op, did_produttore.clone(), did_consumatore.clone(), iscritto_dati_s.clone(), iscritto_log_s.clone());
         let _ind_ult_msg: Vec<String> = moduli::streams::ind_ult_msg(id_app, id_op, did_produttore.clone());
         let _autori: Vec<String> = moduli::streams::ottieni_autore(id_app, id_op, did_produttore.clone());
         let _iscritti: Vec<String> = moduli::streams::ottieni_iscritto(id_app, id_op, did_produttore.clone(), did_consumatore.clone());
     }
-    
+
+    unsafe 
+    {
+        // Simulazione raccolta dati
+        moduli::raccolta_dati::raccolta(id_app, id_op, did_produttore.clone(), did_consumatore.clone(), AUTORE_DATI.as_mut().unwrap(), AUTORE_LOG.as_mut().unwrap()).await?;
+    }
+
+    unsafe 
+    {
+        // Simulazione elaborazione dati
+        moduli::elaborazione_dati::elaborazione(id_app, id_op, did_produttore.clone(), did_consumatore.clone(), ISCRITTO_DATI.as_mut().unwrap(), ISCRITTO_LOG.as_mut().unwrap()).await?;
+    }
+
     Ok(())
 }
 

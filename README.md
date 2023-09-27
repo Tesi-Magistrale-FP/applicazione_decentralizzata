@@ -12,7 +12,5 @@ L'applicazione decentralizzata è composta da diversi moduli Rust:
   - <strong>Indirizzi ultimi messaggi:</strong> ottiene gli indirizzi che puntano agli ultimi messaggi scritti sul canale dati e log.
   - <strong>Ottiene autore:</strong> ottiene gli oggetti Author usati da un produttore in un'operazione sui dati.
   - <strong>Ottiene iscritto:</strong> ottiene gli oggetti Subscriber usati da un consumatore in un'operazione sui dati.
-- [raccolta.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/raccolta.rs): a:
-  - <strong>A:</strong> a.
-- [elaborazione.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/elaborazione.rs): a:
-  - <strong>A:</strong> a.
+- [raccolta_dati.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/raccolta_dati.rs): modulo creato per la raccolta dei dati, la loro pubblicazione sul canale dati, registrazione delle operazioni eseguite sul canale log e aggiornamento indirizzi degli ultimi messaggi.
+- [elaborazione_dati.rs](https://github.com/Tesi-Magistrale-FP/applicazione_decentralizzata/blob/main/src/moduli/elaborazione_dati.rs): modulo pensato per l'accesso ai dati, la loro elaborazione e registrazione delle operazioni eseguite sul canale log.
